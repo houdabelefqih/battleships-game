@@ -1,35 +1,24 @@
 public class Ship {
 
-
-    private int coordinateX;
-    private int coordinateY;
+    private MapCoordinates coordinates;
     private boolean sunkStatus;
     private int playerCode ;
 
 
     public Ship (){
 
-        this.coordinateX =0;
-        this.coordinateY=0;
+        this.coordinates= new MapCoordinates();
         this.sunkStatus=false;
         this.playerCode=0;
     }
 
 
-    public void setCoordinateX(int coordinateX) {
-        this.coordinateX =coordinateX;
+    public void setCoordinates(MapCoordinates coordinates) {
+        this.coordinates =coordinates;
     }
 
-    public int getCoordinateX() {
-        return this.coordinateX;
-    }
-
-    public void setCoordinateY(int coordinateY) {
-        this.coordinateY = coordinateY;
-    }
-
-    public int getCoordinateY() {
-        return this.coordinateY;
+    public MapCoordinates getCoordinates() {
+        return coordinates;
     }
 
     public void setSunkStatus(boolean sunkStatus) {

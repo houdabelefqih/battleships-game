@@ -1,25 +1,31 @@
-import java.util.ArrayList;
+import java.util.HashMap;
+
+import static java.lang.System.exit;
 
 public class OceanMap {
 
     private int oceanMapRows;
     private int oceanMapColumns;
     private char[][] oceanMap;
-    private char initializationChar;
+    private char initialization;
     private int maxShipsPerPlayer;
     private int playerCodeTurn;
     private boolean gameIsOver;
+    private HashMap<Character, Character> symbolMap;
 
 
     public OceanMap(int oceanMapRows, int oceanMapColumns, int maxShipsPerPlayer){
 
        this.oceanMapRows = oceanMapRows;
        this.oceanMapColumns = oceanMapColumns;
-       this.initializationChar=' ';
-       this.oceanMap = initializeOceanMap(oceanMapRows,oceanMapColumns,initializationChar);
-       this.maxShipsPerPlayer=maxShipsPerPlayer;
+       this.initialization='I';
+       this.oceanMap = initializeOceanMap(oceanMapRows,oceanMapColumns,initialization);
+        System.out.println("Symbol at 0,0 : " + this.getOceanMapValue(0,0));
+
+        this.maxShipsPerPlayer=maxShipsPerPlayer;
        this.playerCodeTurn=0;
        this.gameIsOver=false;
+       this.symbolMap= new HashMap<>();
 
     }
 
@@ -40,6 +46,14 @@ public class OceanMap {
         return this.oceanMapColumns;
     }
 
+    public void setOceanMap(char[][] oceanMap) {
+        this.oceanMap = oceanMap;
+    }
+
+    public char[][] getOceanMap() {
+        return oceanMap;
+    }
+
     public void setOceanMapValue(int coordinateX, int coordinateY, char value) {
         this.oceanMap[coordinateX][coordinateY] = value;
     }
@@ -48,12 +62,12 @@ public class OceanMap {
         return this.oceanMap[coordinateX][coordinateY];
     }
 
-    public void setInitializationChar(char initializationChar){
-        this.initializationChar = initializationChar;
+    public void setInitialization(char initializationChar){
+        this.initialization = initializationChar;
     }
 
-    public char getInitializationChar(){
-       return initializationChar;
+    public char getInitialization(){
+       return initialization;
     }
 
     public void setMaxShipsPerPlayer(int maxShipsPerPlayer) {
@@ -80,8 +94,15 @@ public class OceanMap {
         return this.gameIsOver;
     }
 
+    public void setSymbolMap(HashMap<Character, Character> symbolMap) {
+        this.symbolMap = symbolMap;
+    }
 
-    public char[][] initializeOceanMap (int oceanMapRows, int oceanMapColumns, char initializationChar)
+    public HashMap<Character, Character> getSymbolMap() {
+        return symbolMap;
+    }
+
+    public char[][] initializeOceanMap (int oceanMapRows, int oceanMapColumns, char initialization)
     {
         char[][] oceanMap= new char[oceanMapRows][oceanMapColumns];
         /*
@@ -89,52 +110,63 @@ public class OceanMap {
          */
         for (int i=0; i<oceanMapRows;i++) {
             for (int j = 0; j < oceanMapColumns; j++) {
-                oceanMap[i][j]=initializationChar;
+                oceanMap[i][j]= initialization;
+
             }
         }
-     return this.oceanMap;
+        return oceanMap;
 
     }
-
-
 
     /*
     This functions displays the battle ships board i.e 2D matrix
      */
-    public void printOceanMap()
-    {
+    public void printOceanMap() {
         int rows = this.getOceanMapRows();
         int columns = this.getOceanMapColumns();
 
-        System.out.print("   ");
-        for (int k=0;k< columns; k++)
-            System.out.print(k);
+        if (rows <= 0 || columns <= 0) {
+            System.out.println("Error printin ocean map.");
+            exit(0);
+        } else {
 
-        System.out.print("\n");
+            System.out.print("   ");
+            for (int k = 0; k < columns; k++)
+                System.out.print(k);
 
-        for (int i=0; i<rows;i++) {
-            System.out.print(i + " |");
+            System.out.print("\n");
 
-            for (int j = 0; j < columns; j++) {
+            for (int i = 0; i < rows; i++) {
+                System.out.print(i + " |");
 
-                if(this.getOceanMapValue(i,j) == '1')
-                    System.out.print('@');
-                else
-                    System.out.print(this.getOceanMapValue(i,j));
+            /*
+            Print characters according to hashmap values stored in the 2D oceanMap matrix
+                - 0 ----> ' '   (Position is empty)
+                - 1 ----> @     (Where the player's ships are positioned)
+                - 2 ----> ' '   (Where the computer's ships are positioned)
+                - 3 ----> -     (Player missed)
+                - 4 ----> !     (Player hits a computer ship OR Computer hits its own ship)
+                - 5 ----> x     (Computer hits a player ship OR Player hits its own ship )
+             */
+                for (int j = 0; j < columns; j++) {
+                    if (symbolMap.isEmpty() || this.getOceanMap() == null) {
+                        System.out.println("Error printing ocean map");
+                        exit(0);
+                    } else {
+                        System.out.print(this.symbolMap.get(this.getOceanMapValue(i, j)));
+                    }
+                }
+
+                System.out.println("| " + i);
             }
 
-            System.out.println("| " + i);
+            System.out.print("   ");
+            for (int k = 0; k < columns; k++)
+                System.out.print(k);
+
+            System.out.print("\n");
+
         }
-
-        System.out.print("   ");
-        for (int k=0;k< columns; k++)
-            System.out.print(k);
-
-        System.out.print("\n");
-
     }
-
-
-
 
 }

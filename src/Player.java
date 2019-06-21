@@ -5,13 +5,14 @@ public class Player {
 
     private int playerCode;
     private String playerUsername;
-    private Set<Ship> guesses = new HashSet<Ship>();
+    private Set<MapCoordinates> guesses;
     private int playerScore;
 
-    public Player (){
+    apublic Player (int playerCode, String playerUsername){
 
-        this.playerCode =0;
-        this.playerUsername ="";
+        this.playerCode = playerCode;
+        this.playerUsername = playerUsername;
+        guesses = new HashSet<>();
         this.playerScore = 0;
     }
 
