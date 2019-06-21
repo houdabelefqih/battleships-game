@@ -8,7 +8,7 @@ public class Player {
     private Set<MapCoordinates> guesses;
     private int playerScore;
 
-    apublic Player (int playerCode, String playerUsername){
+    public Player (int playerCode, String playerUsername){
 
         this.playerCode = playerCode;
         this.playerUsername = playerUsername;

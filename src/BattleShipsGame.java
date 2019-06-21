@@ -40,55 +40,37 @@ public class BattleShipsGame {
     Scanner input = new Scanner(System.in);
     System.out.println("Deploy your ships: ");
 
-        for(int i=0;i <maxShipsPlayer; i++)
-        do {
+        for(int i=0;i <maxShipsPlayer; i++) {
+            do {
 
-            System.out.print("Enter X coordinate for your ship: ");
-            mapCoordinates.setCoordinateX(input.nextInt());
+                System.out.println("Ship #" + (i + 1));
 
-            System.out.print("Enter Y coordinate for your ship: ");
-            mapCoordinates.setCoordinateY(input.nextInt());
+                System.out.print("Enter X coordinate for your ship: ");
+                mapCoordinates.setCoordinateX(input.nextInt());
 
-        }while(!isValidShipPosition(oceanMap, mapCoordinates));
+                System.out.print("Enter Y coordinate for your ship: ");
+                mapCoordinates.setCoordinateY(input.nextInt());
 
-        /*
-        Add ship to the list of ships the user has placed on the board.
-         */
-       // oceanMap[x][y] = '1';
-       // printOceanMap(oceanMap);
+            } while (!isValidShipPosition(oceanMap, mapCoordinates));
+
+            oceanMap.setOceanMapValue(mapCoordinates, '1');
+        }
 
     }
 
 
 public static void playTheGame(){
-
-
-
-
-
-
-
 }
 
 
-public void generateComputerShips(char[][] oceanMap)
-{
-
-
-
-
-
+public void generateComputerShips(char[][] oceanMap){
 }
 
 
 public boolean gameIsOver(){
-
         boolean gameOver = false;
-
-
-
-
-        return gameOver;
+        
+    return gameOver;
 }
 
 
@@ -104,11 +86,17 @@ This functions validates ship positions entered by the user
         if(coordinates.getCoordinateX() >= rows || coordinates.getCoordinateY() >= columns){
             isValid = false;
             System.out.println("X coordinate cannot exceed " + (rows -1));
-            System.out.println("Y coordinate cannot exceed " + (columns -1));}
+            System.out.println("Y coordinate cannot exceed " + (columns -1));
+            System.out.println("TRY AGAIN:");
+        }
 
         else {
-            if (oceanMap.getOceanMapValue(coordinates.getCoordinateX(), coordinates.getCoordinateY()) == ' ')
+            if (oceanMap.getOceanMapValue(coordinates) != 'I') {
+                System.out.println("----- YOU ALREADY HAVE A SHIP HERE. -----");
+                System.out.println("TRY AGAIN:");
+
                 isValid = false;
+            }
         }
 
     return isValid;

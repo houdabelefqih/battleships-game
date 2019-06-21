@@ -20,9 +20,7 @@ public class OceanMap {
        this.oceanMapColumns = oceanMapColumns;
        this.initialization='I';
        this.oceanMap = initializeOceanMap(oceanMapRows,oceanMapColumns,initialization);
-        System.out.println("Symbol at 0,0 : " + this.getOceanMapValue(0,0));
-
-        this.maxShipsPerPlayer=maxShipsPerPlayer;
+       this.maxShipsPerPlayer=maxShipsPerPlayer;
        this.playerCodeTurn=0;
        this.gameIsOver=false;
        this.symbolMap= new HashMap<>();
@@ -54,12 +52,12 @@ public class OceanMap {
         return oceanMap;
     }
 
-    public void setOceanMapValue(int coordinateX, int coordinateY, char value) {
-        this.oceanMap[coordinateX][coordinateY] = value;
+    public void setOceanMapValue(MapCoordinates mapCoordinates, char value) {
+        this.oceanMap[mapCoordinates.getCoordinateX()][mapCoordinates.getCoordinateY()] = value;
     }
 
-    public char getOceanMapValue(int coordinateX, int coordinateY) {
-        return this.oceanMap[coordinateX][coordinateY];
+    public char getOceanMapValue(MapCoordinates mapCoordinates) {
+        return this.oceanMap[mapCoordinates.getCoordinateX()][mapCoordinates.getCoordinateY()];
     }
 
     public void setInitialization(char initializationChar){
@@ -124,9 +122,10 @@ public class OceanMap {
     public void printOceanMap() {
         int rows = this.getOceanMapRows();
         int columns = this.getOceanMapColumns();
+        MapCoordinates mapCoordinates = new MapCoordinates();
 
         if (rows <= 0 || columns <= 0) {
-            System.out.println("Error printin ocean map.");
+            System.out.println("Error printing ocean map.");
             exit(0);
         } else {
 
@@ -153,7 +152,9 @@ public class OceanMap {
                         System.out.println("Error printing ocean map");
                         exit(0);
                     } else {
-                        System.out.print(this.symbolMap.get(this.getOceanMapValue(i, j)));
+                        mapCoordinates.setCoordinateX(i);
+                        mapCoordinates.setCoordinateY(j);
+                        System.out.print(this.symbolMap.get(this.getOceanMapValue(mapCoordinates)));
                     }
                 }
 
