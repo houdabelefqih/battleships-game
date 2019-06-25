@@ -40,4 +40,12 @@ public class Player {
     public int getPlayerScore() {
         return playerScore;
     }
+
+    public Set<MapCoordinates> getGuesses() {
+        return guesses;
+    }
+
+    public void setGuesses(Set<MapCoordinates> guesses) {
+        this.guesses = guesses;
+    }
 }

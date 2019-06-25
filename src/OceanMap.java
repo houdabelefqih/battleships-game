@@ -10,7 +10,6 @@ public class OceanMap {
     private char initialization;
     private int maxShipsPerPlayer;
     private int playerCodeTurn;
-    private boolean gameIsOver;
     private HashMap<Character, Character> symbolMap;
 
 
@@ -22,7 +21,6 @@ public class OceanMap {
        this.oceanMap = initializeOceanMap(oceanMapRows,oceanMapColumns,initialization);
        this.maxShipsPerPlayer=maxShipsPerPlayer;
        this.playerCodeTurn=0;
-       this.gameIsOver=false;
        this.symbolMap= new HashMap<>();
 
     }
@@ -82,14 +80,6 @@ public class OceanMap {
 
     public int getPlayerCodeTurn() {
         return this.playerCodeTurn;
-    }
-
-    public void setGameIsOver(boolean gameIsOver) {
-        this.gameIsOver = gameIsOver;
-    }
-
-    public boolean getGameIsOver() {
-        return this.gameIsOver;
     }
 
     public void setSymbolMap(HashMap<Character, Character> symbolMap) {
