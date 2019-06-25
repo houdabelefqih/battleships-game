@@ -170,4 +170,36 @@ public class OceanMap {
         }
     }
 
+
+
+    /*
+    This functions validates ship positions entered by the user
+     */
+    public static boolean isValidShipPosition(OceanMap oceanMap, MapCoordinates coordinates )
+    {
+        int rows = oceanMap.getOceanMapRows();
+        int columns = oceanMap.getOceanMapColumns();
+        boolean isValid = true;
+
+        if(coordinates.getCoordinateX() >= rows || coordinates.getCoordinateY() >= columns){
+            isValid = false;
+            System.out.println("X coordinate cannot exceed " + (rows -1));
+            System.out.println("Y coordinate cannot exceed " + (columns -1));
+            System.out.println("TRY AGAIN:");
+        }
+
+        else {
+            if (oceanMap.getOceanMapValue(coordinates) != 'I') {
+                System.out.println("----- THERE'S ALREADY HAVE A SHIP HERE. -----");
+                System.out.println("TRY AGAIN:");
+
+                isValid = false;
+            }
+        }
+
+        return isValid;
+
+    }
+
+
 }

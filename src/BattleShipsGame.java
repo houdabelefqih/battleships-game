@@ -1,18 +1,15 @@
 import com.sun.xml.internal.bind.v2.runtime.Coordinator;
 
 import java.util.HashMap;
+import java.util.Random;
 import java.util.Scanner;
 
 public class BattleShipsGame {
-
 
     public static void main(String[] args) {
 
     int maxShipsPlayer=5,x=0,y=0;
     MapCoordinates mapCoordinates = new MapCoordinates();
-    Player userPlayer = new Player(1, "human");
-    Player computerPlayer = new Player(2, "computer");
-
 
     HashMap<Character, Character> symbolMap= new HashMap<>();
     symbolMap.put('I',' ');
@@ -30,7 +27,7 @@ public class BattleShipsGame {
     Display Welcome message and initial empty board
      */
     System.out.println("**** Welcome to the Battle Ships game ****");
-    System.out.println("Right now, the sea is empty.");
+    System.out.println("Right now, the sea is empty.\n");
     oceanMap.printOceanMap();
 
     /*
@@ -51,57 +48,71 @@ public class BattleShipsGame {
                 System.out.print("Enter Y coordinate for your ship: ");
                 mapCoordinates.setCoordinateY(input.nextInt());
 
-            } while (!isValidShipPosition(oceanMap, mapCoordinates));
+            } while (!oceanMap.isValidShipPosition(oceanMap, mapCoordinates));
 
             oceanMap.setOceanMapValue(mapCoordinates, '1');
         }
+
+        /*
+        Print new ocean map with user's ships deployed
+         */
+        oceanMap.printOceanMap();
+
+        /*
+        Randomly deploy computer's ships
+         */
+
+        deployComputerShips(oceanMap);
+
+        /*
+        Start the game
+         */
+        playTheGame();
+
 
     }
 
 
 public static void playTheGame(){
+    Player userPlayer = new Player(1, "human");
+    Player computerPlayer = new Player(2, "computer");
+
 }
 
 
-public void generateComputerShips(char[][] oceanMap){
+
+
+
+public static void deployComputerShips(OceanMap oceanMap){
+
+    int maxShipsPlayer=5;
+    MapCoordinates mapCoordinates = new MapCoordinates();
+    System.out.println("Computer is deploying ships:");
+    Random randomCoordinate = new Random();
+
+
+    for(int i=0;i <maxShipsPlayer; i++) {
+        do {
+            mapCoordinates.setCoordinateX(randomCoordinate.nextInt(10));
+            mapCoordinates.setCoordinateY(randomCoordinate.nextInt(10));
+
+        } while (!oceanMap.isValidShipPosition(oceanMap, mapCoordinates));
+
+        oceanMap.setOceanMapValue(mapCoordinates, '2');
+        System.out.println((i+1) + ". ship DEPLOYED.");
+    }
+
 }
+
+
+
 
 
 public boolean gameIsOver(){
         boolean gameOver = false;
-        
+
     return gameOver;
 }
-
-
-/*
-This functions validates ship positions entered by the user
- */
-    public static boolean isValidShipPosition(OceanMap oceanMap, MapCoordinates coordinates )
-    {
-        int rows = oceanMap.getOceanMapRows();
-        int columns = oceanMap.getOceanMapColumns();
-        boolean isValid = true;
-
-        if(coordinates.getCoordinateX() >= rows || coordinates.getCoordinateY() >= columns){
-            isValid = false;
-            System.out.println("X coordinate cannot exceed " + (rows -1));
-            System.out.println("Y coordinate cannot exceed " + (columns -1));
-            System.out.println("TRY AGAIN:");
-        }
-
-        else {
-            if (oceanMap.getOceanMapValue(coordinates) != 'I') {
-                System.out.println("----- YOU ALREADY HAVE A SHIP HERE. -----");
-                System.out.println("TRY AGAIN:");
-
-                isValid = false;
-            }
-        }
-
-    return isValid;
-
-    }
 
 
 }
