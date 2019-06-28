@@ -5,3 +5,4 @@ battleship-game.iml
 idea.iml
 *.iml
 *.idea
+out/production/**
