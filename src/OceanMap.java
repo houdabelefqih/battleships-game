@@ -136,6 +136,7 @@ public class OceanMap {
                 - 3 ----> -     (Player missed)
                 - 4 ----> !     (Player hits a computer ship OR Computer hits its own ship)
                 - 5 ----> x     (Computer hits a player ship OR Player hits its own ship )
+                - C ----> ' '   (Computer missed)
              */
                 for (int j = 0; j < columns; j++) {
                     if (symbolMap.isEmpty() || this.getOceanMap() == null) {
@@ -144,7 +145,9 @@ public class OceanMap {
                     } else {
                         mapCoordinates.setCoordinateX(i);
                         mapCoordinates.setCoordinateY(j);
+                        //System.out.print(this.getOceanMapValue(mapCoordinates));
                         System.out.print(this.symbolMap.get(this.getOceanMapValue(mapCoordinates)));
+
                     }
                 }
 
@@ -155,7 +158,8 @@ public class OceanMap {
             for (int k = 0; k < columns; k++)
                 System.out.print(k);
 
-            System.out.print("\n");
+            System.out.println("\n");
+            System.out.println("--------------------------------------------------------------------------");
 
         }
     }

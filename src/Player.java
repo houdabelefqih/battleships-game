@@ -4,14 +4,12 @@ import java.util.Set;
 public class Player {
 
     private int playerCode;
-    private String playerUsername;
     private Set<MapCoordinates> guesses;
     private int playerScore;
 
-    public Player (int playerCode, String playerUsername){
+    public Player (int playerCode){
 
         this.playerCode = playerCode;
-        this.playerUsername = playerUsername;
         guesses = new HashSet<>();
         this.playerScore = 0;
     }
@@ -25,13 +23,6 @@ public class Player {
         return playerCode;
     }
 
-    public void setPlayerUsername(String playerUsername) {
-        this.playerUsername = playerUsername;
-    }
-
-    public String getPlayerUsername() {
-        return playerUsername;
-    }
 
     public void setPlayerScore(int playerScore){
         this.playerScore = playerScore;
@@ -47,5 +38,10 @@ public class Player {
 
     public void setGuesses(Set<MapCoordinates> guesses) {
         this.guesses = guesses;
+    }
+
+    public void addGuess(MapCoordinates coordinates){
+
+        this.guesses.add(coordinates);
     }
 }
