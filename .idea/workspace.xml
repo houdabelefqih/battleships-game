@@ -1,18 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="efb8c1bf-e94c-4bac-a1e6-0a1f948f1cb5" name="Default Changelist" comment="Changed map display function and added new classes.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/battleship-game/BattleShipsGame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/battleship-game/BattleShipsGame.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/battleship-game/OceanMap.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/battleship-game/OceanMap.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/battleship-game/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/battleship-game/Player.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/battleship-game/Ship.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BattleShipsGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BattleShipsGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MapCoordinates.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MapCoordinates.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/OceanMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/OceanMap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Ship.java" beforeDir="false" />
-    </list>
+    <list default="true" id="efb8c1bf-e94c-4bac-a1e6-0a1f948f1cb5" name="Default Changelist" comment="Changed map display function and added new classes." />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -83,7 +72,7 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/OceanMap.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="191">
+            <state relative-caret-position="4">
               <caret line="160" column="30" selection-start-line="160" selection-start-column="30" selection-end-line="160" selection-end-column="30" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -241,7 +230,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="793" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17167382" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -253,7 +241,7 @@
       <window_info anchor="bottom" id="Messages" weight="0.39233038" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32890856" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.28761062" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.9026549" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.2079646" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -343,7 +331,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/OceanMap.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="191">
+        <state relative-caret-position="4">
           <caret line="160" column="30" selection-start-line="160" selection-start-column="30" selection-end-line="160" selection-end-column="30" />
           <folding>
             <element signature="imports" expanded="true" />
